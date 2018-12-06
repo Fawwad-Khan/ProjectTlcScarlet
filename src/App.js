@@ -78,7 +78,7 @@ class App extends Component {
     })
   }
   render() {
-    const towers = [
+    const towers = [/* 
       {lat:24.98962229,lng: 67.08173247},
       {lat:24.93376927,lng: 66.96448038},
       {lat:25.00279251,lng: 67.00373437},
@@ -88,7 +88,7 @@ class App extends Component {
       {lat:24.95752404,lng: 66.91460901},
       {lat:24.8829257,lng: 67.13000474},
       {lat:24.87354415,lng: 67.03703935},
-      {lat:24.75132031,lng: 67.02778418},
+      {lat:24.75132031,lng: 67.02778418}, */
     ];
     return (
       <div className="App">
