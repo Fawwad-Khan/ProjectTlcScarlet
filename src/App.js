@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import GoogleMapReact from 'google-map-react';
 import './App.css';
 import radiotower from "./radio-tower.png";
+import marker from "./marker.png";
 const AnyReactComponent = ({ radius,distance }) => <div>{distance > radius ? <img width="30" height="30" style={{display:'none'}} src={radiotower}/> : <img width="30" height="30" style={{display:'block'}} src={radiotower}/> }</div>;
+const CenterMarker = () => <div><img width="40" height="40" alt="centerMarker"  src={marker}/></div>;
 class App extends Component {
   constructor(){
     super();
@@ -33,6 +35,8 @@ class App extends Component {
     autocomplete.addListener('place_changed', () => {
      
      var place = autocomplete.getPlace();
+     console.log(autocomplete);
+     console.log(place);
      if(place.geometry){
       this.setState({
         center:{
@@ -96,6 +100,7 @@ class App extends Component {
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyDs39h2u7BBlxTC1cqnwmtFp1mHVa4nzZ4" }}
           center={this.state.center}
+          options={{mapTypeControl: true,streetViewControl: true}}
           defaultZoom={this.state.zoom}
           onGoogleApiLoaded ={this.onMapLoad}
         >
@@ -108,10 +113,18 @@ class App extends Component {
               radius={this.state.radius}
             />)
       )}
+      <CenterMarker 
+              lat={this.state.center.lat}
+              lng={this.state.center.lng} />
         </GoogleMapReact>
         </div>
         <input onChange={this.onChange} id="radius" value={this.state.radius} name="radius" />
         <input onChange={this.onChange} id="address" value={this.state.address} name="address" ref="address" />
+        <h2>
+          You are at: <br/>
+          Latitude: {this.state.center.lat}, 
+          Longitude: {this.state.center.lng}, 
+        </h2>
       </div>
     );
   }
