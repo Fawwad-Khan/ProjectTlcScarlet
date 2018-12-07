@@ -112,7 +112,7 @@ class App extends Component {
         />
         <h3>
           You are at: <br />
-          {this.state.center.lat.toFixed(6)},{this.state.center.lng.toFixed(6)}
+          {this.state.center.lat.toFixed(6)}, {this.state.center.lng.toFixed(6)}
           <br />
           <a
             href={`https://earth.google.com/web/@${this.state.center.lat},${
